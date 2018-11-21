@@ -5,6 +5,7 @@ import Controller from "./controller"
 const port = process.env.PORT || 4000
 
 const app = createKoaServer({
+   cors: true,
    controllers: [Controller]
 })
 
