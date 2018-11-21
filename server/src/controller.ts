@@ -1,17 +1,19 @@
-import {Controller, Get} from 'routing-controllers'
+import {Controller, Get, Post, Body} from 'routing-controllers'
+import Advertisement from './entity';
 
 @Controller()
-export default class MainController {
+export default class AdController {
 
     @Get("/advertisements")
-    main() {
+    async getAllAds() {
        return {
-         data: [
-             {id: 1, title: "I'm an ad"},
-             {id: 2, title: "I'm an ad 2"},
-             {id: 3, title: "I'm an ad 3"},
-         ]
+         data: await Advertisement.find()
        }
+    }
+
+    @Post("/advertisements")
+    async createAd(@Body() ad: Advertisement) {
+        return ad.save()
     }
 
 }
