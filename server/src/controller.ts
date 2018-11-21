@@ -12,7 +12,7 @@ export default class AdController {
     }
 
     @Post("/advertisements")
-    async createAd(@Body() ad: Advertisement) {
+    createAd(@Body() ad: Advertisement) {
         return ad.save()
     }
 
